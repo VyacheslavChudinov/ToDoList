@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { registerLocaleData } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -22,8 +21,11 @@ export class LoginComponent implements OnInit {
     const password = target.querySelector('#password').value;
 
     this.auth.loginUser(email, password).subscribe(data => {
-      this.auth.setLoggedIn(data.success);
-      this.router.navigate(['home']);
+      if (data.success){        
+        this.auth.setUserEmail = email;
+        this.auth.loggedIn = true;
+        this.router.navigate(['home']);
+      }
     });
     console.log(email, password);
   }

@@ -6,22 +6,29 @@ interface registerResponse {
 }
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedInStatus = false;
+  private loggedInStatus: boolean = false;
+  private currentUserEmail: string;
 
   constructor(private http: HttpClient) { }
 
-  setLoggedIn(value:boolean){
-    this.loggedInStatus = value;
-  }
+  set loggedIn(value){
+    this.loggedInStatus = value;  
+  }  
 
   get isLoggedIn() {
     return this.loggedInStatus;
+  }
+
+  set setUserEmail(email){
+    this.currentUserEmail = email;
+  }
+
+  get userEmail(){
+    return this.currentUserEmail;
   }
 
   loginUser(email, password){

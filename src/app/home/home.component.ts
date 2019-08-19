@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../news.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { NewsService } from '../news.service';
 export class HomeComponent implements OnInit {
   public newsList: string[];
 
-  constructor(private news: NewsService) { }
+  constructor(private news: NewsService, private auth: AuthService) { }
 
   ngOnInit() {
     this.updateNews();
@@ -25,10 +26,17 @@ export class HomeComponent implements OnInit {
     event.preventDefault();
     const errors = [];
     const target = event.target;
+    const authorEmail = this.auth.userEmail;
     const content = target.querySelector('#content').value;
 
+    if (!this.auth.isLoggedIn){
+      errors.push('User is not logged in');            
+    }
+
     if (errors.length === 0){
-      this.news.createNewsPost(content).subscribe(data => {
+      let postedDate = Date.now();
+
+      this.news.createNewsPost(content, postedDate, authorEmail).subscribe(data => {
         this.updateNews();
 
         console.log(data);

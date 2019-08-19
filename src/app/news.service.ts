@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 interface newsData {
   content: String,
   likes: {type: Number, default: 0 },
-  //postedDate: {type: Date, default: Date.now};
+  postedDate: Date,
+  authorEmail: String
 }
 
 @Injectable({
@@ -18,9 +19,11 @@ export class NewsService {
     return this.http.get<string[]>('/api/news', {});
   }
 
-  createNewsPost(content){
+  createNewsPost(content, postedDate, authorEmail){
     return this.http.post<newsData>('/api/news', {
-      content
+      content,
+      postedDate,
+      authorEmail
     });
   }
 }
