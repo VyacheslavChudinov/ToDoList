@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
     const errors = [];
     const target = event.target;
-    const username = target.querySelector('#username').value;
+    const email = target.querySelector('#email').value;
     const password = target.querySelector('#password').value;
     const confirmPassword = target.querySelector('#confirmPassword').value;
 
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (errors.length === 0){
-      this.auth.registerUser(username, password).subscribe(data => {
+      this.auth.registerUser(email, password).subscribe(data => {
         console.log(data);
 
         if (data.success) { 
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       })
     }
 
-    console.log(username, password);
+    console.log(email, password);
   }
 
 }

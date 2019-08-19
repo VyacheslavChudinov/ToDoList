@@ -1,2 +1,22 @@
-<a routerLink="/login">Login</a>
-<a routerLink="/register">Register</a>
+<div class="register-container" ng-hide="auth.isLoggedIn">
+    <a class="login" routerLink="/login">Login</a>
+    <a class="register" routerLink="/register">Register</a>
+</div>
+
+<div class="new-post-container">
+    <form (submit)="createNewsPost($event)">
+        <div>
+            <input type="text" autocomplete="off" placeholder="Content" id="content">
+        </div>
+        <div>
+            <button type="submit" autocomplete="off" id="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="news-container" *ngFor="let news of newsList">
+    <div class="content">
+        {{news.content}}
+    </div>
+    
+</div>

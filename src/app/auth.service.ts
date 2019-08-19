@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface userData {
-  success: boolean,
-  message: string,
-}
-
-
 interface registerResponse {
   success: boolean,
 }
+
+
 
 
 @Injectable({
@@ -28,18 +24,16 @@ export class AuthService {
     return this.loggedInStatus;
   }
 
-  getUserDetails(username, password){
-    return this.http.post<userData>('/api/auth', {
-      username,
+  loginUser(email, password){
+    return this.http.post<registerResponse>('/api/login', {
+      email,
       password
-    }).subscribe(data => {
-      console.log(data);
-    })    
+    }) 
   }
 
-  registerUser(username, password){
+  registerUser(email, password){
     return this.http.post<registerResponse>('/api/register', {
-      username,
+      email,
       password
     }) 
   }
