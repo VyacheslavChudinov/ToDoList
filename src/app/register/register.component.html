@@ -1,16 +1,17 @@
-<form (submit)="registerUser($event)">
-    <div class="container">
-        <div>
-            <input type="text" autocomplete="off" placeholder="Email" id="email">
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+    <div class="form-group container"> 
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Email" formControlName="email">
         </div>
-        <div>
-            <input type="password" autocomplete="off" placeholder="Password" id="password">
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Password" formControlName="password">
         </div>
-        <div>
-            <input type="password" autocomplete="off" placeholder="Confirm Password" id="confirmPassword">
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Confirm Password" formControlName="confirmPassword">
         </div>
-        <div>
-            <button type="submit" autocomplete="off" id="submit">Submit</button>
+        <div class="form-group">
+            <button class="btn btn-primary submit" type="submit" [disabled]="!registerForm.valid">Submit</button>
         </div>
-    </div>
+    </div>    
 </form>
+

@@ -9,10 +9,12 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
   public newsList: string[];
+  public isUserLoggedIn: boolean;
 
   constructor(private news: NewsService, private auth: AuthService) { }
 
   ngOnInit() {
+    this.isUserLoggedIn = this.auth.isLoggedIn;
     this.updateNews();
   }
 
@@ -22,28 +24,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  createNewsPost(event){
-    event.preventDefault();
-    const errors = [];
-    const target = event.target;
-    const authorEmail = this.auth.userEmail;
-    const content = target.querySelector('#content').value;
-
-    if (!this.auth.isLoggedIn){
-      errors.push('User is not logged in');            
-    }
-
-    if (errors.length === 0){
-      let postedDate = Date.now();
-
-      this.news.createNewsPost(content, postedDate, authorEmail).subscribe(data => {
-        this.updateNews();
-
-        console.log(data);
-      })
-    }
+  logout(){
+    this.auth.loggedIn = false;
+    this.isUserLoggedIn = false;
   }
-
-
-
 }

@@ -1,33 +1,20 @@
 <div class="home">    
     <div class="header">
-        <div class="register-container" [hidden]="loggedIn">
-            <a class="login" routerLink="/login">Login</a>
-            <a class="register" routerLink="/register">Register</a>
-        </div>
+        <app-user-section [isUserLoggedIn]="isUserLoggedIn"></app-user-section>
     </div>
     <div class="content">
-        <div class="new-post-container">
-                <form (submit)="createNewsPost($event)">
-                    <div>
-                        <input type="text" autocomplete="off" placeholder="Content" id="content">
-                    </div>
-                    <div>
-                        <button type="submit" autocomplete="off" id="submit">Submit</button>
-                    </div>
-                </form>
+        <div>
+            <a class="new-post" routerLink="/new-post">Add a new post</a>
+        </div>
+        <div appSlideAnimation class="news-container" *ngFor="let news of newsList">
+            <div class="form-group news-content">
+                <div>{{news.content}}</div> 
             </div>
-            
-            <div class="news-container" *ngFor="let news of newsList">
-                <div class="news-content">
-                        {{news.content}}
-                </div>
-                <div class="author">
-                    <span>Author: {{news.authorEmail}}</span>
-                </div> 
-                <div class="posted-date">
-                    <span>{{news.postedDate | date: 'short'}}</span>
-                </div>  
-            </div>
+            <div class="form-group info">
+                <span>Author: {{news.authorEmail}}</span>
+                <span>{{news.postedDate | date: 'short'}}</span>
+            </div> 
+        </div>
     </div>
     
 </div>

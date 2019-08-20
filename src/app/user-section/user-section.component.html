@@ -1,0 +1,5 @@
+<div class="register-container">
+    <a class="login" routerLink="/login" [hidden]="isUserLoggedIn">Login</a>
+    <a class="register" routerLink="/register" [hidden]="isUserLoggedIn">Register</a>
+    <a class="logout" href="#" (click)="logout($event)" [hidden]="!isUserLoggedIn">Logout</a>
+</div>
