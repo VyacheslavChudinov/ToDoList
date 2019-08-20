@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./user-section.component.less']
 })
 export class UserSectionComponent implements OnInit {
-  @Input() isUserLoggedIn: boolean;
+  @Input() public isUserLoggedIn: boolean;
 
   constructor() { }
 

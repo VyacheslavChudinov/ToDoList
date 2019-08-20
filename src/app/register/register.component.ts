@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,9 +11,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {   
   public registerForm = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl(),
-    confirmPassword: new FormControl(),
+    email: new FormControl(null, [Validators.required, Validators.maxLength(50)]),
+    password: new FormControl(null, [Validators.minLength(8), Validators.required]),
+    confirmPassword: new FormControl(null, [Validators.minLength(8), Validators.required]),
   });
 
   constructor(private auth: AuthService, private router: Router) { }

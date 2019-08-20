@@ -1,11 +1,11 @@
 <app-user-section [isUserLoggedIn]="isUserLoggedIn"></app-user-section>
 <div class="post-container">
-    <form #form="ngForm" (ngSubmit)="createNewsPost(form.value)">
+    <form #form="ngForm" (ngSubmit)="form.valid && createNewsPost(form.value)">
         <div class="form-group">
-            <textarea placeholder="Start writing your post here" class="form-control post-text" name="content" ngModel></textarea>
+            <textarea placeholder="Start writing your post here" class="form-control post-text" name="content" required ngModel></textarea>
         </div>
         <div class="form-group">
-            <button type="submit" autocomplete="off" class="btn btn-primary submit">Submit</button>
+            <button type="submit" autocomplete="off" class="btn btn-primary submit" [disabled]="!form.valid">Submit</button>
         </div>
     </form>
 </div>
