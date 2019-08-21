@@ -1,6 +1,6 @@
 <div class="home">    
     <div class="header">
-        <app-user-section [isUserLoggedIn]="isUserLoggedIn"></app-user-section>
+        <app-user-section (onLogoutClick)="onLogoutClick()" [isUserLoggedIn]="isUserLoggedIn"></app-user-section>
     </div>
     <div class="content">
         <div>

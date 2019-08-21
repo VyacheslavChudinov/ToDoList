@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  logout(){
+  onLogoutClick(){
     this.auth.loggedIn = false;
     this.isUserLoggedIn = false;
   }
