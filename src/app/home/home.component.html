@@ -4,17 +4,17 @@
     </div>
     <div class="content">
         <div>
-            <a class="new-post" routerLink="/new-post">Add a new post</a>
+            <a mat-button class="new-post" routerLink="/new-post">Add a new post</a>
         </div>
-        <div appSlideAnimation class="news-container" *ngFor="let news of newsList">
-            <div class="form-group news-content">
-                <div>{{news.content}}</div> 
+        <mat-card appSlideAnimation class="news-container" *ngFor="let news of newsList">
+            <div class="news-content">
+                <mat-card-content>{{news.content}}</mat-card-content> 
             </div>
-            <div class="form-group info">
-                <span>Author: {{news.authorEmail}}</span>
-                <span>{{news.postedDate | date: 'short'}}</span>
+            <div class="info">
+                <mat-card-content>Author: {{news.authorEmail}}</mat-card-content>
+                <mat-card-content>{{news.postedDate | date: 'short'}}</mat-card-content>
             </div> 
-        </div>
+        </mat-card>
     </div>
     
 </div>

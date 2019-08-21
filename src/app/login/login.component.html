@@ -1,13 +1,11 @@
-<form (submit)="loginUser($event)">
+<form class="login-form" (submit)="loginUser($event)">
     <div class="container">
-        <div class="form-group">
-            <input class="form-control" type="text" autocomplete="off" placeholder="Email" id="email">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" autocomplete="off" placeholder="Password" id="password">
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary submit" type="submit" autocomplete="off" id="submit">Submit</button>
-        </div>
+        <mat-form-field>
+            <input matInput type="text" autocomplete="off" placeholder="Email" id="email">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="password" autocomplete="off" placeholder="Password" id="password">
+        </mat-form-field>
+        <button mat-button class="submit" type="submit" autocomplete="off" id="submit">Submit</button>
     </div>
 </form>

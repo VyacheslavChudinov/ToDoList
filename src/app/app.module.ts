@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewPostComponent } from './new-post/new-post.component';
 import { UserSectionComponent } from './user-section/user-section.component';
 import { SlideAnimationDirective } from './slide-animation.directive'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatButtonModule, MatCardModule, MatInputModule, MatFormFieldModule, MatCheckboxModule, MatDatepickerModule, MatRadioModule, MatSelectModule } from '@angular/material';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +42,15 @@ const routes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(routes),
     HttpClientModule,    
+    MatInputModule, 
+    MatButtonModule, 
+    MatCardModule, 
+    MatFormFieldModule, 
+    MatCheckboxModule, 
+    MatDatepickerModule, 
+    MatRadioModule, 
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
